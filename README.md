@@ -18,11 +18,12 @@ This Python project validates user data such as Aadhaar numbers, phone numbers, 
 3. Check the output file cleaned_data.csv for validation results.
 
 Technologies Used
-Python
 
-CSV file handling
+1)Python
 
-Regular expressions (regex)
+2)CSV file handling
+
+3)Regular expressions (regex)
 
 Sample Input
 | Name   | Aadhaar      | Phone      | Email                                           |
