@@ -1,40 +1,41 @@
-# Data Sanitization & Validation Tool
+# 🧹 Data Sanitization & Validation Tool
 
-## Overview
-This Python project validates user data such as Aadhaar numbers, phone numbers, and email addresses from CSV files. It automates the process of data cleaning by identifying and flagging invalid entries, helping improve data accuracy and integrity.
+This project is a simple Python-based utility for cleaning and validating Aadhaar-related user data. It processes a CSV file (`input_data.csv`), sanitizes common fields like Aadhaar Number, Email, Phone, and Date of Birth, and saves a clean version as `sanitized_data.csv`.
 
-## Features
-- Validates Aadhaar numbers ensuring exactly 12 digits.  
-- Checks Indian phone numbers starting with digits 6-9 and 10 digits long.  
-- Validates email addresses with a regex pattern.  
-- Outputs a new CSV file with additional columns indicating validity of each data field.
+## 🚀 Features
 
-## How to Use
-1. Place your input CSV file named `input_data.csv` in the project directory.  
+- Strips unnecessary whitespace and invalid characters
+- Validates Aadhaar numbers (12 digits)
+- Validates phone numbers (10 digits)
+- Validates email format
+- Ensures DOB format (YYYY-MM-DD)
+- Outputs a cleaned CSV with only valid records
+
+## 🛠️ Technologies Used
+
+- Python
+- `pandas` for data handling
+- Regular expressions (`re`) for field validation
+
+## 📂 How to Run
+
+1. Place your raw data file as `input_data.csv` in the same directory.
 2. Run the script:
-   ```bash
-   python data_sanitization.py
 
-3. Check the output file cleaned_data.csv for validation results.
+```bash
+python data_sanitization.py
 
-Technologies Used
+3. Output will be saved as sanitized_data.csv.
 
-1)Python
+📄 Sample Input (input_data.csv)
+| Aadhaar        | Email                                       | Phone      | DOB        |
+| -------------- | ------------------------------------------- | ---------- | ---------- |
+| 1234 5678 9123 | [user@example.com](mailto:user@example.com) | 9876543210 | 2000-01-01 |
+| 1111-2222-3333 | invalid-email                               | 12345      | 01/01/2000 |
 
-2)CSV file handling
+✅ Sample Output (sanitized_data.csv)
+| Aadhaar      | Email                                       | Phone      | DOB        |
+| ------------ | ------------------------------------------- | ---------- | ---------- |
+| 123456789123 | [user@example.com](mailto:user@example.com) | 9876543210 | 2000-01-01 |
 
-3)Regular expressions (regex)
 
-Sample Input
-| Name   | Aadhaar      | Phone      | Email                                           |
-| ------ | ------------ | ---------- | ----------------------------------------------- |
-| Shreya | 123412341234 | 9876543210 | [shreya@example.com](mailto:shreya@example.com) |
-| Rohan  | 111122223333 | 1234567890 | rohan@@example.com                              |
-
-Sample Output
-| Name   | Aadhaar      | Phone      | Email                                           | Aadhaar\_Valid | Phone\_Valid | Email\_Valid |
-| ------ | ------------ | ---------- | ----------------------------------------------- | -------------- | ------------ | ------------ |
-| Shreya | 123412341234 | 9876543210 | [shreya@example.com](mailto:shreya@example.com) | True           | True         | True         |
-| Rohan  | 111122223333 | 1234567890 | rohan@@example.com                              | True           | False        | False        |
-
-This project is open-source and free to use.
